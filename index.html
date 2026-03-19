@@ -25,7 +25,10 @@
         <a href="#profile">Profile</a>
         <a href="#projects">Latest Projest</a>
       </div>
-      <button type="button" id="theme-toggle" class="theme-toggle">Light Mode</button>
+      <label class="theme-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+        <span class="slider"></span>
+      </label>
     </div>
   </nav>
 
@@ -199,14 +202,13 @@
 
     if (savedTheme === 'light') {
       document.body.classList.add('light-mode');
-      toggleButton.textContent = 'Dark Mode';
+      toggleButton.checked = true;
     }
 
-    toggleButton.addEventListener('click', () => {
+    toggleButton.addEventListener('change', () => {
       document.body.classList.toggle('light-mode');
       const isLight = document.body.classList.contains('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      toggleButton.textContent = isLight ? 'Dark Mode' : 'Light Mode';
     });
   </script>
 
